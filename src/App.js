@@ -1,14 +1,14 @@
 import React, {useState} from "react"
 
-function App() {
+const App = () => {
     const [newTodoValue, setNewTodoValue] = useState("")
     const [todosList, setTodosList] = useState([])
     
-    function handleChange(event) {
+    const handleChange = (event) => {
         setNewTodoValue(event.target.value)
     }
     
-    function addTodo(event) {
+    const addTodo = (event) => {
         event.preventDefault()
         setTodosList(prevTodosList => [...prevTodosList, newTodoValue])
         setNewTodoValue("")
