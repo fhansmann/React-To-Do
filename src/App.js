@@ -1,8 +1,9 @@
-import React, {useState} from "react"
+import React, {useState, useRef} from "react"
 
 const App = () => {
     const [newTodoValue, setNewTodoValue] = useState("")
     const [todosList, setTodosList] = useState([])
+    const inputRef = useRef(null)
     
     const handleChange = (event) => {
         setNewTodoValue(event.target.value)
@@ -12,6 +13,7 @@ const App = () => {
         event.preventDefault()
         setTodosList(prevTodosList => [...prevTodosList, newTodoValue])
         setNewTodoValue("")
+        inputRef.current.focus()
     }
     
     const allTodos = todosList.map(todo => <p key={todo}>{todo}</p>)
@@ -20,6 +22,7 @@ const App = () => {
         <div>
             <form>
                 <input
+                ref = {inputRef}
                 type="text" 
                 name="todo"  
                 value={newTodoValue} 
